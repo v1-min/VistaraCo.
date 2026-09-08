@@ -1,41 +1,232 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="vistara (4).png" type="image/x-icon">
-  <link rel="stylesheet" href="index.css">
-<title>VISTARA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-  :root{
-    --ink:#13213D;
-    --ink-2:#1C2F52;
-    --paper:#FFFFFF;
-    --paper-alt:#F6F7FA;
-    --muted:#5C6B84;
-    --muted-light:#8C97AC;
-    --accent:#C89B3C;
-    --accent-soft:#EFE3C4;
-    --line:#E3E6ED;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:'Inter', sans-serif;
-    color:var(--ink);
-    background:var(--paper);
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit; text-decoration:none;}
-  ul{list-style:none;}
-  .wrap{max-width:1160px; margin:0 auto; padding:0 32px;}
-  h1,h2,h3{font-family:'Fraunces', serif; font-weight:500; line-height:1.12;}
-  :focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VISTARA</title>
 
+  <link rel="shortcut icon" href="vistara (4).png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="index.css">
+
+  <style>
+    :root {
+      --ink: #13213D;
+      --ink-2: #1C2F52;
+      --paper: #FFFFFF;
+      --paper-alt: #F6F7FA;
+      --muted: #5C6B84;
+      --muted-light: #8C97AC;
+      --accent: #C89B3C;
+      --accent-soft: #EFE3C4;
+      --line: #E3E6ED;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      line-height: 1.12;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    header .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-size: 21px;
+      font-weight: 600;
+    }
+
+    nav.mainnav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    nav.mainnav a.link {
+      font-size: 14px;
+      color: var(--muted);
+      padding: 6px 0;
+      border-bottom: 2px solid transparent;
+      transition: color .15s ease, border-color .15s ease;
+    }
+
+    nav.mainnav a.link:hover,
+    nav.mainnav a.link.active {
+      color: var(--ink);
+      border-color: var(--accent);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border-radius: 2px;
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid var(--ink);
+      cursor: pointer;
+      transition: background .15s ease, color .15s ease;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--ink-2);
+    }
+
+    .btn-ghost {
+      border-color: var(--line);
+      color: var(--ink);
+      background: transparent;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--ink);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      margin: 5px 0;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(180deg, rgba(15, 24, 46, 0.58) 0%, rgba(19, 33, 61, 0.68) 55%, rgba(19, 33, 61, 0.82) 100%);
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+<body class="intro-active">
+
+  <!-- INTRO SECTION -->
+  <div id="intro">
+    <h1 id="intro-title">Vistara</h1>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div id="main-content">
+    <header>
+      <div class="wrap">
+        <div class="logo">VISTARA</div>
+        <nav class="mainnav">
+          <a href="#" class="link active">Beranda</a>
+          <a href="#" class="link">Layanan</a>
+          <a href="#" class="link">Tentang</a>
+          <a href="#" class="link">Kontak</a>
+        </nav>
+        <button class="btn btn-primary">Mulai</button>
+      </div>
+    </header>
+  </div>
+
+  <!-- SCRIPT UNTUK ANIMASI INTRO TEKS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const title = document.getElementById("intro-title");
+      if (!title) return;
+
+      const text = title.innerText.trim();
+      title.innerHTML = "";
+
+      let delay = 0;
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        if (char === " ") {
+          const space = document.createElement("span");
+          space.className = "intro-space";
+          space.innerHTML = "&nbsp;";
+          title.appendChild(space);
+        } else {
+          const span = document.createElement("span");
+          span.innerText = char;
+          span.style.animationDelay = delay + "s";
+          title.appendChild(span);
+          delay += 0.08;
+        }
+      }
+
+      // Sembunyikan intro setelah selesai
+      setTimeout(() => {
+        document.body.classList.remove("intro-active");
+        document.body.classList.add("intro-done");
+      }, (delay + 1.8) * 1000);
+    });
+  </script>
+</body>
+</html>
   /* ===== Header ===== */
   header{
     position:sticky; top:0; z-index:100;

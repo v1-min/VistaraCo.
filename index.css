@@ -1,0 +1,162 @@
+/* =====================================================
+   VISTARA — HANDWRITING GLOW INTRO
+   ===================================================== */
+
+body.intro-active {
+  overflow: hidden;
+}
+
+/* Full screen intro */
+#intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(200, 155, 60, 0.08) 0%,
+      transparent 45%
+    ),
+    #13213D;
+
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 1.4s cubic-bezier(.77, 0, .175, 1),
+    visibility 1.4s;
+}
+
+/* Intro text */
+#intro-title {
+  max-width: 90vw;
+
+  text-align: center;
+
+  /* HANDWRITING FONT */
+  font-family: 'Caveat', cursive;
+
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 500;
+  line-height: 1.05;
+
+  letter-spacing: 0.02em;
+
+  color: #ffffff;
+
+  /* INITIAL GLOW */
+  text-shadow:
+    0 0 5px rgba(255,255,255,.9),
+    0 0 12px rgba(255,255,255,.8),
+    0 0 25px rgba(255,255,255,.55),
+    0 0 50px rgba(200,155,60,.35);
+
+  animation: vistaraGlow 2.8s ease-in-out infinite alternate;
+}
+
+
+/* Individual letters */
+#intro-title span {
+  display: inline-block;
+
+  opacity: 0;
+
+  transform:
+    translateY(25px)
+    scale(.92);
+
+  animation:
+    vistaraLetterIn .7s
+    cubic-bezier(.22,1,.36,1)
+    forwards;
+}
+
+
+/* Space between words */
+#intro-title .intro-space {
+  width: .28em;
+}
+
+
+/* Letter entrance */
+@keyframes vistaraLetterIn {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      translateY(25px)
+      scale(.92);
+
+    filter: blur(8px);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter: blur(0);
+  }
+}
+
+
+/* Breathing glow */
+@keyframes vistaraGlow {
+
+  0% {
+    text-shadow:
+      0 0 5px rgba(255,255,255,.7),
+      0 0 12px rgba(255,255,255,.5),
+      0 0 25px rgba(200,155,60,.25);
+  }
+
+  100% {
+    text-shadow:
+      0 0 7px rgba(255,255,255,1),
+      0 0 18px rgba(255,255,255,.9),
+      0 0 35px rgba(255,255,255,.65),
+      0 0 65px rgba(200,155,60,.45);
+  }
+}
+
+
+/* Website appears after intro */
+#main-content {
+  opacity: 0;
+
+  transition:
+    opacity 1.2s ease;
+}
+
+
+/* Intro disappears */
+body.intro-done #intro {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+
+/* Website becomes visible */
+body.intro-done #main-content {
+  opacity: 1;
+}
+
+
+/* Mobile */
+@media (max-width: 600px) {
+
+  #intro-title {
+    font-size: clamp(2.8rem, 13vw, 4.5rem);
+    letter-spacing: 0;
+    padding: 0 20px;
+  }
+
+}
